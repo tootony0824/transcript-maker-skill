@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an ASR context from explicitly selected vocabulary groups."""
+"""Build an ASR context from default or explicitly selected vocabulary groups."""
 import argparse
 import json
 from pathlib import Path
@@ -27,10 +27,11 @@ def build_context(groups, selected, max_terms=30):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--vocabulary', type=Path, default=Path(__file__).resolve().parents[1] / 'assets/vocabulary.json')
-    parser.add_argument('--group', action='append', required=True)
+    parser.add_argument('--group', action='append', help='select a group; repeat to select more')
     args = parser.parse_args()
     try:
-        print(build_context(json.loads(args.vocabulary.read_text(encoding='utf-8')), args.group))
+        groups = json.loads(args.vocabulary.read_text(encoding='utf-8'))
+        print(build_context(groups, args.group if args.group else list(groups)))
     except (ValueError, OSError) as exc:
         parser.error(str(exc))
 

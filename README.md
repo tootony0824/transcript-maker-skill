@@ -18,7 +18,7 @@
 
 ## 术语提示
 
-可按主题选择少量术语，作为 Qwen 可选的上下文提示。热词可能导致误识别；后处理匹配仅作候选，保留原文并核对。词表与操作说明见 [术语和热词](transcript-maker/references/hotwords.md)。
+Qwen 默认使用常用词库作为上下文提示，也可按主题选择或关闭。热词可能导致误识别；后处理匹配仅作候选，保留原文并核对。词表与操作说明见 [术语和热词](transcript-maker/references/hotwords.md)。
 
 ## 测试记录
 

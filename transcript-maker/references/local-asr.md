@@ -9,8 +9,9 @@
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install 'mlx-qwen3-asr==0.4.4'
+CONTEXT="$(python3 transcript-maker/scripts/build_context.py)"
 .venv/bin/mlx-qwen3-asr /path/to/audio.m4a \
-  --model Qwen/Qwen3-ASR-0.6B --language Chinese \
+  --model Qwen/Qwen3-ASR-0.6B --language Chinese --context "$CONTEXT" \
   --output-format json --output-dir /path/to/output
 ```
 

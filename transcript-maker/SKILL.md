@@ -17,7 +17,7 @@ description: 从本地音视频或可访问的网页生成带媒体附件、段�
 ## 识别
 
 - Apple Silicon 默认使用 Qwen3-ASR 0.6B 的 MLX 实现 `mlx-qwen3-asr`，输出 JSON 并保留 `chunks` 的时间范围；默认不运行额外的词级对齐。安装与命令见 [本地识别](references/local-asr.md)。用户指定其他模型或云服务时遵从用户选择。
-- 术语识别有明确需求时，参考 [术语和热词](references/hotwords.md)，选取本任务相关词作为可选上下文；不要把热词当作可靠证据或无条件自动替换。
+- Qwen 默认加载 [常用词库](assets/vocabulary.json) 并通过 `--context` 提供识别提示，按 [术语和热词](references/hotwords.md) 构造；可依材料调整词组或按用户要求关闭。记录实际词库，不把热词当作可靠证据或无条件自动替换。
 - 保留 MLX Whisper large-v3-turbo 作为本地备用。首次安装、模型选择和网络下载按任务环境处理；不得上传用户媒体到云端而不告知用户。
 - 检查识别是否截断、是否有空段、异常重复或明显静音幻觉。无法可靠恢复的内容标记 `[识别异常，建议回听]`；只修正可由来源或上下文直接确认的术语。保留原始 JSON 供复核。
 - 模型带足够标点时保留并抽查；明显不足时使用专用标点恢复，详见 [标点恢复](references/punctuation-restoration.md)。不要将生成式润色当作逐字稿初审。
