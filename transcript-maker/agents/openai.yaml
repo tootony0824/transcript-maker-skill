@@ -1,0 +1,4 @@
+interface:
+  display_name: "逐字稿生成器"
+  short_description: "从音视频生成带时间戳的逐字稿"
+  default_prompt: "使用 $transcript-maker 生成带段落时间戳的逐字稿，按我的要求保存。"

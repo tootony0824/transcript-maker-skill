@@ -1,0 +1,13 @@
+.DS_Store
+.venv*/
+__pycache__/
+*.pyc
+.env
+.env.*
+models/
+outputs/
+*.wav
+*.mp3
+*.m4a
+*.mp4
+*.safetensors
